@@ -1,3 +1,3 @@
-### 0.0.1 (2022-04-12)
+### 0.0.4 (2022-04-12)
 
-- Initial release
+- Initial release. It Works!
