@@ -1,0 +1,67 @@
+{
+  "ecmaFeatures": {
+    "globalReturn": true,
+    "jsx": true,
+    "modules": true
+  },
+
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+
+  "extends": "eslint:recommended",
+
+  "globals": {
+    "document": false,
+    "escape": false,
+    "navigator": false,
+    "unescape": false,
+    "window": false,
+    "describe": true,
+    "before": true,
+    "it": true,
+    "expect": true,
+    "sinon": true
+  },
+
+  "parser": "babel-eslint",
+
+  "rules": {
+    "block-scoped-var": 2,
+    "eqeqeq": "error",
+    "no-shadow": "error",
+    "valid-jsdoc": [
+      "error",
+      {
+        "requireReturn": false,
+        "requireParamDescription": false,
+        "requireReturnDescription": false
+      }
+    ],
+    "no-trailing-spaces": "error",
+    "indent": [
+      "error",
+      2
+    ],
+    "prefer-destructuring": "error",
+    "prefer-arrow-callback": "error",
+    "comma-style": [
+      "error",
+      "last"
+    ],
+    "keyword-spacing": "error",
+    "space-before-function-paren": [
+      "error",
+      {
+        "named": "never"
+      }
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "no-eval": "error"
+  }
+}

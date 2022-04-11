@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CZ bank account validator - Browser usage</title>
+</head>
+<body>
+<script type="text/javascript" src="../lib/cz-bank-account-validator.min.js"></script>
+<script type="text/javascript">
+    const czBankAccountValidator = window['cz-bank-account-validator'];
+    const isValid = czBankAccountValidator.validate('2502056361/2010');
+    alert(isValid);
+</script>
+</body>
+</html>
