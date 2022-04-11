@@ -17,11 +17,10 @@ const config = {
   entry: __dirname + '/src/index.js',
   devtool: 'source-map',
   output: {
-    path: __dirname + '/lib',
-    filename: outputFile,
     library: libraryName,
     libraryTarget: 'umd',
-    umdNamedDefine: true,
+    path: __dirname + '/lib',
+    filename: outputFile,
     globalObject: 'this',
   },
   optimization: {
