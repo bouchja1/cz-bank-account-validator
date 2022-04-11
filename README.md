@@ -33,43 +33,43 @@ _(See example/index.html for code example)_
 In Node.js (require):
 
 ```js
-const bankValidator = require('cz-bank-account-validator/lib/cz-bank-account-validator');
+const czBankAccountValidator = require('cz-bank-account-validator/lib/cz-bank-account-validator');
 
-bankValidator.validate('2502056361/2010');
+czBankAccountValidator.validate('2502056361/2010');
 // => true
 ```
 
 ES6 Modules:
 
 ```js
-import bankValidator from 'cz-bank-account-validator/lib/cz-bank-account-validator';
+import czBankAccountValidator from 'cz-bank-account-validator/lib/cz-bank-account-validator';
 
-bankValidator.validate('2502056361/2010');
+czBankAccountValidator.validate('2502056361/2010');
 // => true
 ```
 
 ## Usage
 
 ```js
-const bankAccountValidator = require('cz-bank-account-validator/lib/cz-bank-account-validator');
+const czBankAccountValidator = require('cz-bank-account-validator/lib/cz-bank-account-validator');
 
-bankAccountValidator.validate('2502056361/2010') // true
-bankAccountValidator.validate('19-2502056361/0800') // false - unknown bank code
-bankAccountValidator.validate('19-2502056361/9999') // false - unknown bank code
+czBankAccountValidator.validate('2502056361/2010') // true
+czBankAccountValidator.validate('19-2502056361/0800') // false - unknown bank code
+czBankAccountValidator.validate('19-2502056361/9999') // false - unknown bank code
 
-bankAccountValidator.getAllBankCodes() // '{"2010":{"bankName":"Fio banka, a.s."},"2020":{"bankName":"MUFG Bank (Europe) N.V. Prague Branch"},"2030":{"bankName":"AKCENTA, spořitelní a úvěrní družstvo"}, ... "0710":{"bankName":"Česká národní banka"},"0800":{"bankName":"Česká spořitelna, a.s."}}'
+czBankAccountValidator.getAllBankCodes() // '{"2010":{"bankName":"Fio banka, a.s."},"2020":{"bankName":"MUFG Bank (Europe) N.V. Prague Branch"},"2030":{"bankName":"AKCENTA, spořitelní a úvěrní družstvo"}, ... "0710":{"bankName":"Česká národní banka"},"0800":{"bankName":"Česká spořitelna, a.s."}}'
 
-bankAccountValidator.getAccountPrefix('2502056361/2010') // null
-bankAccountValidator.getAccountPrefix('19-2502056361/0800') // 19
-bankAccountValidator.getAccountPrefix('19-2502056361/9999') // null
+czBankAccountValidator.getAccountPrefix('2502056361/2010') // null
+czBankAccountValidator.getAccountPrefix('19-2502056361/0800') // 19
+czBankAccountValidator.getAccountPrefix('19-2502056361/9999') // null
 
-bankAccountValidator.getAccountNumber('2502056361/2010') // 2502056361
-bankAccountValidator.getAccountNumber('19-2502056361/0800') // 2502056361
-bankAccountValidator.getAccountNumber('19-2502056361/9999') // null
+czBankAccountValidator.getAccountNumber('2502056361/2010') // 2502056361
+czBankAccountValidator.getAccountNumber('19-2502056361/0800') // 2502056361
+czBankAccountValidator.getAccountNumber('19-2502056361/9999') // null
 
-bankAccountValidator.getBankCode('2502056361/2010') // 2010
-bankAccountValidator.getBankCode('19-2502056361/0800') // 0800
-bankAccountValidator.getBankCode('19-2502056361/9999') // null
+czBankAccountValidator.getBankCode('2502056361/2010') // 2010
+czBankAccountValidator.getBankCode('19-2502056361/0800') // 0800
+czBankAccountValidator.getBankCode('19-2502056361/9999') // null
 
 ```
 
