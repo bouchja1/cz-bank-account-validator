@@ -1,6 +1,6 @@
 # Czech Bank Account Validator
 
-A small and handy library to validate CZ bank account numbers. Running in a browser, in Node.js and also as an ES6 module.
+A small and handy library to validate CZ bank account numbers. Running in a browser, in Node.js and also as ES6 module.
 
 ## Getting Started
 
