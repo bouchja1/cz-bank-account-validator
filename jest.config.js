@@ -1,6 +1,6 @@
 const ignorePatterns = ['/node_modules/'];
 
-export default {
+const config = {
     transform: {
         '^.+\\.js$': 'babel-jest',
         '^.+\\.mjs$': 'babel-jest',
@@ -15,3 +15,5 @@ export default {
     testRegex: '((\\.|/*.)(test))\\.js?$',
     testTimeout: 30000,
 };
+
+module.exports = config;

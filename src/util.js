@@ -15,9 +15,8 @@ export const mod11 = (number) => {
         .reduce((x, y) => {
             return x + y;
         });
-
-    return sum % 11 == 0;
-}
+    return sum % 11 === 0;
+};
 
 export const getBankAccountGroups = (bankAccount = '') => {
     if (typeof bankAccount !== 'string' || bankAccount.length < 1) {
@@ -38,4 +37,4 @@ export const getBankAccountGroups = (bankAccount = '') => {
         };
     }
     return null;
-}
+};

@@ -1,5 +1,3 @@
-/*
-
 const bankAccountValidatorLib = require('../lib/cz-bank-account-validator');
 
 const { validate, getAccountNumber, getAccountPrefix, getBankCode } = bankAccountValidatorLib;
@@ -35,8 +33,8 @@ describe('test CZ bank account numbers validation', () => {
         expect(getBankCode(account)).toBeNull();
     });
 
-    test('should be invalid bank account number - invalid account', () => {
-        const account = '19-1111111111/0800';
+    test('should be invalid bank account number - invalid account - mod 11 is not fulfilled', () => {
+        const account = '19-9144118100/0800';
         expect(validate(account)).toBeFalsy();
         expect(getAccountPrefix(account)).toBeNull();
         expect(getAccountNumber(account)).toBeNull();
@@ -51,4 +49,3 @@ describe('test CZ bank account numbers validation', () => {
         expect(getBankCode(account)).toBeNull();
     });
 });
-*/

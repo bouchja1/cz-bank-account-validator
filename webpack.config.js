@@ -7,7 +7,7 @@ const libraryName = 'cz-bank-account-validator';
 
 let plugins = [], outputFile;
 
-if (env === 'production') {
+if (env === 'node') {
   outputFile = libraryName + '.min.js';
 } else {
   outputFile = libraryName + '.js';
