@@ -63,7 +63,7 @@ bankValidator.validate('19-2502056361/0800') // true
 
 ### Invalid bank account numbers
 
-Unknown bank code (see all [src/bankCodes.js](supported CZ bank codes)):
+Unknown bank code (see all [supported CZ bank codes](src/bankCodes.js)):
  
 ```js
 bankValidator.validate('19-2502056361/9999') // false
