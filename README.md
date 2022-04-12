@@ -19,58 +19,89 @@ $ yarn add cz-bank-account-validator
 ### Installation
 
 In a browser:
-_(See example/index.html for code example)_
 
 ```html
 <script type="text/javascript" src="cz-bank-account-validator.min.js"></script>
 <script type="text/javascript">
-    const czBankAccountValidator = window['cz-bank-account-validator'];
-    const isValid = czBankAccountValidator.validate('2502056361/2010');
+    const bankValidator = window['cz-bank-account-validator'];
+    const isValid = bankValidator.validate('2502056361/2010');
     alert(isValid);
 </script>
 ```
 
-In Node.js (require):
+In Node.js (with require):
 
 ```js
-const czBankAccountValidator = require('cz-bank-account-validator/lib/cz-bank-account-validator');
+const bankValidator = require('cz-bank-account-validator/lib/cz-bank-account-validator');
 
-czBankAccountValidator.validate('2502056361/2010');
+bankValidator.validate('2502056361/2010');
 // => true
 ```
 
 ES6 Modules:
 
 ```js
-import czBankAccountValidator from 'cz-bank-account-validator/lib/cz-bank-account-validator';
+import bankValidator from 'cz-bank-account-validator/lib/cz-bank-account-validator';
 
-czBankAccountValidator.validate('2502056361/2010');
+bankValidator.validate('2502056361/2010');
 // => true
 ```
 
 ## Usage
 
 ```js
-const czBankAccountValidator = require('cz-bank-account-validator/lib/cz-bank-account-validator');
+const bankValidator = require('cz-bank-account-validator/lib/cz-bank-account-validator');
+```
 
-czBankAccountValidator.validate('2502056361/2010') // true
-czBankAccountValidator.validate('19-2502056361/0800') // false - unknown bank code
-czBankAccountValidator.validate('19-2502056361/9999') // false - unknown bank code
+### Valid bank account numbers
+```js
 
-czBankAccountValidator.getAllBankCodes() // '{"2010":{"bankName":"Fio banka, a.s."},"2020":{"bankName":"MUFG Bank (Europe) N.V. Prague Branch"},"2030":{"bankName":"AKCENTA, spořitelní a úvěrní družstvo"}, ... "0710":{"bankName":"Česká národní banka"},"0800":{"bankName":"Česká spořitelna, a.s."}}'
+bankValidator.validate('2502056361/2010') // true
+bankValidator.validate('19-2502056361/0800') // true
 
-czBankAccountValidator.getAccountPrefix('2502056361/2010') // null
-czBankAccountValidator.getAccountPrefix('19-2502056361/0800') // 19
-czBankAccountValidator.getAccountPrefix('19-2502056361/9999') // null
+```
 
-czBankAccountValidator.getAccountNumber('2502056361/2010') // 2502056361
-czBankAccountValidator.getAccountNumber('19-2502056361/0800') // 2502056361
-czBankAccountValidator.getAccountNumber('19-2502056361/9999') // null
+### Invalid bank account numbers
 
-czBankAccountValidator.getBankCode('2502056361/2010') // 2010
-czBankAccountValidator.getBankCode('19-2502056361/0800') // 0800
-czBankAccountValidator.getBankCode('19-2502056361/9999') // null
+Unknown bank code (see all [src/bankCodes.js](supported CZ bank codes)):
+ 
+```js
+bankValidator.validate('19-2502056361/9999') // false
+```
 
+Account prefix allowed length exceeded:
+ 
+```js
+bankValidator.validate('1999999-2502056361/0800') // false
+```
+
+Account number mod 11 rule not fulfilled:
+
+```js
+bankValidator.validate('19-9144118100/0800') // false
+```
+
+### Get all CZ bank codes
+```js
+bankValidator.getAllBankCodes() // '{"2010":{"bankName":"Fio banka, a.s."},"2020":{"bankName":"MUFG Bank (Europe) N.V. Prague Branch"},"2030":{"bankName":"AKCENTA, spořitelní a úvěrní družstvo"}, ... "0710":{"bankName":"Česká národní banka"},"0800":{"bankName":"Česká spořitelna, a.s."}}'
+```
+
+### Get bank account fragments
+```js
+bankValidator.getAccountPrefix('2502056361/2010') // null - prefix is empty
+bankValidator.getAccountPrefix('19-2502056361/0800') // 19
+bankValidator.getAccountPrefix('19-2502056361/9999') // null - bank code is invalid => account number is invalid
+bankValidator.getAccountPrefix('19-9144118100/0800') // null - account number mod 11 rule not fulfilled => account number is invalid
+
+bankValidator.getAccountNumber('2502056361/2010') // 2502056361
+bankValidator.getAccountNumber('19-2502056361/0800') // 2502056361
+bankValidator.getAccountNumber('19-2502056361/9999') // null - bank code is invalid => account number is invalid
+bankValidator.getAccountNumber('19-9144118100/0800') // null - account number mod 11 rule not fulfilled => account number is invalid
+
+bankValidator.getBankCode('2502056361/2010') // 2010
+bankValidator.getBankCode('19-2502056361/0800') // 0800
+bankValidator.getBankCode('19-2502056361/9999') // null - bank code is invalid => account number is invalid
+bankValidator.getBankCode('19-9144118100/0800') // null - account number mod 11 rule not fulfilled => account number is invalid
 ```
 
 ## License

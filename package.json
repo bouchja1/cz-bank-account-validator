@@ -1,6 +1,6 @@
 {
   "name": "cz-bank-account-validator",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A small and handy library to validate CZ bank account numbers. Running in a browser, in Node.js and also as an ES6 module.",
   "main": "lib/cz-bank-account-validator.min.js",
   "scripts": {
